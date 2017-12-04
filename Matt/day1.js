@@ -4,19 +4,19 @@ let digits = '892195969991735837915273868729548694237967495115412399373194562526
 
 // split into array of integers
 digits = digits.split('').map(digit => {
-  return parseInt(digit);
+  return parseInt(digit, 10);
 });
 
 // iterate over array and add if value equals previous value
 for (let i = 0; i < digits.length; i++) {
   if (digits[i] == digits[i - 1]) {
-    total += digits[i]
+    total += digits[i];
   }
 }
 
 // check if first and last value are equal
 if (digits[0] === digits[digits.length - 1]) {
-  total += digits[0]
+  total += digits[0];
 }
 
 return total;
