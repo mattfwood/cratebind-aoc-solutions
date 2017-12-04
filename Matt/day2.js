@@ -28,4 +28,4 @@ data.forEach(row => {
   total += diff;
 })
 
-console.log(total);
+return total;
