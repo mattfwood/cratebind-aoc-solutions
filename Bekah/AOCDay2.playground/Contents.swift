@@ -1,11 +1,15 @@
 import UIKit
 
 func sumOfRows(sequence: String) -> Int {
+    //split into array by new line
     let splitString = sequence.components(separatedBy: "\n")
     var sum = 0
+    //split into array of array by spaces
     for i in splitString {
         let splitAgainString = i.components(separatedBy: "    ")
+        //map into integers and sort
         let intArray = splitAgainString.flatMap{[Int(String($0))!]}.sorted()
+        //add last and first item in arry and then add all together
         sum = sum + intArray.last! - intArray[0]
     }
     return sum
@@ -37,8 +41,11 @@ func sumOfDivisibleRows(sequence: String) -> Int {
     let splitString = sequence.components(separatedBy: "\n")
     var sumArray = [Int]()
     for i in splitString {
+        //split into array same as first way
         let splitAgainString = i.components(separatedBy: "    ")
+        //map into integers
         let intArray = splitAgainString.flatMap{[Int(String($0))!]}
+        //compare the array against itself for any two numbers where there is no remainder and add to array **EDIT** again with the arrays?? idk
         for int in intArray {
             for int2 in intArray {
                 if int % int2 == 0 && int / int2 != 1 {
@@ -49,12 +56,5 @@ func sumOfDivisibleRows(sequence: String) -> Int {
     }
     return sumArray.reduce(0, +)
 }
-
-
-var test = """
-5 9 2 8
-9 4 7 3
-3 8 6 5
-"""
 
 print(sumOfDivisibleRows(sequence: spreadsheet))
