@@ -541,3 +541,30 @@ function countValid(input) {
 
     return count;
 }
+
+function checkAllWords(arr) {
+    let valid = true;
+    const allCombosArr = [];
+    arr.forEach((word) => {
+        let sortedWord = word.split('').sort().join('');
+        if (allCombosArr.includes(sortedWord)) {
+            valid = false;
+        } else {
+            allCombosArr.push(sortedWord);
+        }
+    });
+    return valid;
+}
+
+function scrambleWords(arr) {
+    let validCount = 0;
+    arr.forEach((str) => {
+        const wordArr = str.split(' ');
+        if (checkAllWords(wordArr)) {
+            validCount++;
+        };
+    })
+    return validCount;
+}
+
+scrambleWords(input);
